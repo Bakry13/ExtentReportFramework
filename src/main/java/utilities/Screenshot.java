@@ -1,7 +1,6 @@
 package utilities;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import utilities.common.Paths;
 import utilities.base.TestBase;

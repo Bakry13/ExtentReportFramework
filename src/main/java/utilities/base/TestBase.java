@@ -101,7 +101,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
     @BeforeTest
     public static void initialization() {
         ConfigUtil.loadTestConfigurations();
-        TestBase.setBrowserType(BrowserType.CHROME);
+        setBrowserType(BrowserType.CHROME);
         BrowserActions.maximizeWindow();
     }
 

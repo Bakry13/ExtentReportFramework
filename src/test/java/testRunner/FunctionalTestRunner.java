@@ -10,8 +10,11 @@ import org.testng.annotations.BeforeTest;
 import utilities.common.Paths;
 
 @CucumberOptions(features = {"src/test/java/features/FE"}, glue = {"stepDefinition/fe", "utilities"},
-        tags = "@Test"
-        ,plugin = {"pretty","html:test-output/DefaultReport/DefaultReport.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+        tags = ("@Test")
+        ,plugin = {"pretty","html:test-output/DefaultReport/DefaultReport.html",
+        //"json:test-output/jsonReport/jsonReport.json",
+        //"junit:test-output/junitReport/jsonReport.xml",
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
        //,plugin = {"pretty","html:cucumber-reports/DefaultReport.html"}
         )
 
