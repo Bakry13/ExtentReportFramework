@@ -1,0 +1,53 @@
+{
+  "Locators": {
+    "LoginPageTitle": "LoginPageTitle_lbl",
+    "LoginPageSubtitle": "LoginPageSubtitle_lbl",
+    "SignInHintTitle": "SignInHintTitle_lbl",
+    "SignInHintBody": "SignInHintBody_lbl",
+    "CustomerNumber": "CustomerNumber_tb",
+    "CustomerNumberInlineError": "CustomerNumberInlineError_lbl",
+    "AccountNumber": "AccountNumber_tb",
+    "AccountNumberInlineError": "AccountNumberInlineError_lbl",
+    "AccessID": "AccessID_tb",
+    "AccessIDInlineError": "AccessIDInlineError_lbl",
+    "SignInButton": "SignIn_btn",
+    "SignInErrorMsg": "SignInErrorMsg_lbl",
+    "ChangeLanguageButton": "ChangeLanguage_btn",
+    "TermsFooter": "Impressum_dl",
+    "PrivacyFooter": "Datenschutz_dl"
+  },
+  "Text": {
+    "LoginPageTitle":
+    {
+     "English": "",
+     "Deutsch": ""
+    },
+    "SignInHintTitle":
+    {
+      "English": "Please provide two of the three fields.",
+      "Deutsch": "Bitte befüllen Sie zwei der drei Felder."
+    },
+    "SignInHintBody":
+    {
+      "English": "You can find the required info on the invoice or the welcome letter.",
+      "Deutsch": "Sie finden die benötigten Daten auf Ihrer Rechnung oder auf Ihrem Willkommensbrief."
+    },
+    "SignInButton":
+    {
+      "English": "Sign in",
+      "Deutsch": "Einloggen"
+    },
+    "TermsFooter":
+    {
+      "English": "Terms",
+      "Deutsch": "Impressum"
+    },
+    "PrivacyFooter":
+    {
+      "English": "Privacy",
+      "Deutsch": "Datenschutz"
+    }
+
+  }
+
+}
