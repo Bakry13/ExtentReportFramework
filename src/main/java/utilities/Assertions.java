@@ -74,8 +74,6 @@ public class Assertions {
         }
     }
 
-
-
     public static void assertInlineErrorMessage(String ExpectedText , By locator) {
         String Actual = ElementActions.getTextOfElement(locator);
         Assert.assertEquals(Actual, ExpectedText);

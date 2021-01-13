@@ -1,5 +1,6 @@
 package pages.fe;
 
+import utilities.Assertions;
 import utilities.ConfigUtil;
 import utilities.actions.BrowserActions;
 import utilities.actions.ElementActions;
@@ -8,80 +9,89 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 
 public class LoginPage {
-
-    private JSONObject pageData = JsonTestDataReader.parseJson("pages/loginPage.json");
-    private JSONObject pageLocators = (JSONObject) pageData.get("Locators");
-    private JSONObject pageText = (JSONObject) pageData.get("Text");
-    public  void login()
+    //=============================Locators==================================
+    By loginPageTitle = By.id("LoginPageTitle_lbl");
+    By loginPageSubtitle = By.id("LoginPageSubtitle_lbl");
+    By signInHintTitle = By.id("SignInHintTitle_lbl");
+    By signInHintBody = By.id("SignInHintBody_lbl");
+    By customerNumber = By.id("CustomerNumber_tb");
+    By customerNumberInlineError = By.id("CustomerNumberInlineError_lbl");
+    By accountNumber = By.id("AccountNumber_tb");
+    By accountNumberInlineError = By.id("AccountNumberInlineError_lbl");
+    By accessID = By.id("AccessID_tb");
+    By accessIDInlineError = By.id("AccessIDInlineError_lbl");
+    By signInButton = By.id("SignIn_btn");
+    By signInErrorMsg = By.id("SignInErrorMsg_lbl");
+    By changeLanguageButton = By.id("ChangeLanguage_btn");
+    By termsFooter = By.id("Impressum_dl");
+    By privacyFooter = By.id("Datenschutz_dl");
+    //=============================Strings==================================
+    String signInHintTitleText[] =
+            {"Please provide two of the three fields."
+            , "Bitte befüllen Sie zwei der drei Felder."};
+    String signInHintBodyText[] =
+            {"You can find the required info on the invoice or the welcome letter."
+            ,"Sie finden die benötigten Daten auf Ihrer Rechnung oder auf Ihrem Willkommensbrief."};
+    String customerNumberInlineErrorText[] =
+            {"Entry doesn't match the requested format. Please enter the customer number."
+            , "Eingabe entspricht nicht dem gültigen Format.\nBitte tragen Sie Ihre Kundennummer ein."};
+    String accountNumberInlineErrorText[] =
+            {"Entry doesn't match the requested format. Please enter the account number."
+            , "Eingabe entspricht nicht dem gültigen Format.\nBitte tragen Sie Ihre Rechnungskonto Nr. ein."};
+    String accessIDInlineErrorText[] =
+            {"Please enter a valid access number."
+            , "Bitte tragen Sie Ihre Anschlusskennung ein."};
+    String signInButtonText[] = {"Sign in", "Einloggen"};
+    String termsFooterText[] = {"Terms", "Impressum"};
+    String privacyFooterText[] = {"Privacy", "Datenschutz"};
+    //-----------------------------------Assertions--------------------------------
+    public void assertSignInHintTitle()
     {
-        BrowserActions.navigateToPage(ConfigUtil.WebSTURL);
-
-    }
-    public String getChangeLanguageButtonText()
-    {
-        String language= ElementActions.getTextOfElement(getLocator("ChangeLanguageButton"));
-            return language;
-    }
-    public String getLanguage()
-    {   String language ="";
-        if (getChangeLanguageButtonText().equals("English"))
-            language="Deutsch";
-        else if (getChangeLanguageButtonText().equals("Deutsch"))
-            language="English";
-        else
-            System.out.println("error in getting the language ");
-        return language;
-    }
-
-    public void setLanguage(String language)
-    {
-        if (getChangeLanguageButtonText().equals(language))
-            ElementActions.forceClickOnElementByLocator(getLocator("ChangeLanguageButton"));
-        System.out.println(language+" is selected");
-        while (getChangeLanguageButtonText().equals(language)|| getChangeLanguageButtonText().equals(""));
-    }
-    public boolean getElementVisibility(String elementString)
-    {
-        By elementLocator=getLocator(elementString);
-        return ElementActions.checkElementExists(elementLocator);
-    }
-    public String getElementText(String elementString)
-    {
-        By elementLocator=getLocator(elementString);
-        return ElementActions.getTextOfElement(elementLocator);
-    }
-    public By getLocator(String elementString) {
-        By locator= null;
-        String locatorString= pageLocators.get(elementString).toString();
-             if (locatorString.equals(""))
-                 System.out.println("No Such Element");
-             else
-                 locator=By.id(locatorString);
-        return locator;
-    }
-    public String getDisplayText(String ElementName, String language)
-    {
-        JSONObject elementTextJson= (JSONObject)pageText.get(ElementName);
-        String elementText = elementTextJson.get(language).toString();
-        return elementText;
+        Assertions.assertElementExist(signInHintTitle);
     }
 
-    public void click(String elementString) {
-        ElementActions.clickOnElementByLocator(getLocator(elementString));
+    public void assertSignInHintBody()
+    {
+        Assertions.assertElementExist(signInHintBody);
     }
-    public String getText(String elementString) {
-        String elementText ="";
-        By elementLocator= getLocator(elementString);
-        elementText =   ElementActions.getTextOfElement(elementLocator);
-        return elementText;
-    }
-    public void setText(String elementString, String input ) {
-        By elementLocator= getLocator(elementString);
-        ElementActions.typeInTextField(elementLocator,input+"\t");
 
+    public void assertCustomerNumber()
+    {
+        Assertions.assertElementExist(customerNumber);
     }
-    public void clearText(String elementString ) {
-        By elementLocator= getLocator(elementString);
-        ElementActions.forceClearTestBox(elementLocator);
+
+    public void assertAccountNumber()
+    {
+        Assertions.assertElementExist(accountNumber);
+    }
+
+    public void assertAccessID()
+    {
+        Assertions.assertElementExist(accessID);
+    }
+
+    public void assertSignInButton()
+    {
+        Assertions.assertElementExist(signInButton);
+    }
+
+    public void assertChangeLanguageButton()
+    {
+        Assertions.assertElementExist(changeLanguageButton);
+    }
+
+    public void assertSignInHintTitleText()
+    {
+        Assertions.assertOnElementText(signInHintTitle,signInHintTitleText[CommonPage.languageIndex]);
+    }
+
+    public void assertSignInHintBodyText()
+    {
+        Assertions.assertOnElementText(signInHintBody,signInHintBodyText[CommonPage.languageIndex]);
+    }
+
+    public void assertSignInButtonText()
+    {
+        Assertions.assertOnElementText(signInButton,signInButtonText[CommonPage.languageIndex]);
     }
 }

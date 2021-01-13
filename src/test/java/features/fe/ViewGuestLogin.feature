@@ -25,21 +25,21 @@ Feature: View Guest Login
   Scenario: Login to easy ticket and check that elements exist
     Given I open Easy Ticket Portal
     When I check login page content
-    Then I "should" see "SignInHintTitle" in the page
-    And I "should" see "SignInHintBody" in the page
-    And I "should" see "CustomerNumber" in the page
-    And I "should" see "AccountNumber" in the page
-    And I "should" see "AccessID" in the page
-    And I "should" see "SignInButton" in the page
-    And I "should" see "ChangeLanguageButton" in the page
+    Then I should see SignInHintTitle in login page
+    And I should see SignInHintBody in login page
+    And I should see CustomerNumber in login page
+    And I should see AccountNumber in the page
+    And I should see AccessID in the page
+    And I should see SignInButton in the page
+    And I should see ChangeLanguageButton in the page
 
+  @THOR-96
   Scenario Outline: Login to easy ticket and check elements text in "<language>" language
     Given I open Easy Ticket Portal
-    When I check login page content
-    And set "<language>"
-    Then I should see "SignInHintTitle" has the translated text in the page
-    And I should see "SignInHintBody" has the translated text in the page
-    And I should see "SignInButton" has the translated text in the page
+    When set "<language>"
+    Then I should see SignInHintTitle has the translated text in login page
+    And I should see SignInHintBody has the translated text in login page
+    And I should see SignInButton has the translated text in login page
 
     Examples:
       | language |

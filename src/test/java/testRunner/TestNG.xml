@@ -16,10 +16,10 @@
 <!--            <class name="utilities.TestBase"></class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="IE Test">
-        <parameter name="Browser" value="IE" />
-        <classes>
-            <class name="testRunner.FunctionalTestRunner"></class>
-        </classes>
-    </test>
+<!--    <test name="IE Test">-->
+<!--        <parameter name="Browser" value="IE" />-->
+<!--        <classes>-->
+<!--            <class name="testRunner.FunctionalTestRunner"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

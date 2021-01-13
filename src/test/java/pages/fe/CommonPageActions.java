@@ -9,10 +9,11 @@ import utilities.readers.JsonTestDataReader;
 
 public class CommonPageActions
 {
-    //======================================Set page path=====================================
+    //=======================Set json file path for page data==============================
     JSONObject pageData;
     JSONObject pageLocators;
     JSONObject pageText;
+    //String path = "pages/loginPage.json";
     public void setPageDataPath(String path)
     {
         pageData = JsonTestDataReader.parseJson(path);
@@ -83,18 +84,16 @@ public class CommonPageActions
     }
     public String getText(String elementString) {
         String elementText ="";
-        By elementLocator= getLocator(elementString);
+        By elementLocator = getLocator(elementString);
         elementText =   ElementActions.getTextOfElement(elementLocator);
         return elementText;
     }
     public void setText(String elementString, String input ) {
         By elementLocator= getLocator(elementString);
         ElementActions.typeInTextField(elementLocator,input+"\t");
-
     }
     public void clearText(String elementString ) {
         By elementLocator= getLocator(elementString);
         ElementActions.forceClearTestBox(elementLocator);
     }
-
 }

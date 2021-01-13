@@ -116,7 +116,6 @@ public class TestBase extends AbstractTestNGCucumberTests {
         BrowserActions.navigateToPage(ConfigUtil.WebSTURL);//get URL
     }
 
-
     @AfterTest
     public static void quitDriver() // call this method to get the driver object and launch the browser
     {
