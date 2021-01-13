@@ -21,10 +21,10 @@
                         <suiteXmlFile>src/test/java/testRunner/TestNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!--For Cucumber reports-->
-<!--                    <systemPropertyVariables>-->
-<!--                        <extent.reporter.html.start>true</extent.reporter.html.start>-->
-<!--                        <extent.reporter.html.out>cucumber-reports/cucumberReport.html</extent.reporter.html.out>-->
-<!--                    </systemPropertyVariables>-->
+                    <!--                    <systemPropertyVariables>-->
+                    <!--                        <extent.reporter.html.start>true</extent.reporter.html.start>-->
+                    <!--                        <extent.reporter.html.out>cucumber-reports/cucumberReport.html</extent.reporter.html.out>-->
+                    <!--                    </systemPropertyVariables>-->
                 </configuration>
             </plugin>
 
@@ -159,6 +159,7 @@
             <version>7.3.0</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
 </project>

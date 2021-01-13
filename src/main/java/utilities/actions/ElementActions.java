@@ -1,12 +1,12 @@
 package utilities.actions;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import utilities.base.TestBase;
+import utilities.TestBase;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
@@ -26,15 +26,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ElementActions {
-    public static WebDriverWait wait = new WebDriverWait(TestBase.getDriver(), Duration.ofSeconds(5));
+public class ElementActions extends TestBase {
+    public static WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 
     public static void reloadDriver()
     {
-        wait = new WebDriverWait(TestBase.getDriver(), Duration.ofSeconds(5));
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
     }
     public static String findElementTextByIndex(By locator, int index) {
-        WebElement element = TestBase.getDriver().findElements(locator).get(index);
+        WebElement element = getDriver().findElements(locator).get(index);
         scrollPageToElement(element);
         highlightElement(element);
         unhighlightElement(element);
@@ -42,7 +42,7 @@ public class ElementActions {
     }
 
     public static void clickOnRadioButtonWithIndex(By locator, int index) {
-        WebElement element = TestBase.getDriver().findElements(locator).get(index);
+        WebElement element = getDriver().findElements(locator).get(index);
         scrollPageToElement(element);
         highlightElement(element);
         unhighlightElement(element);
@@ -55,7 +55,7 @@ public class ElementActions {
 
     public static boolean checkElementExists(By locator) {
         try {
-            WebElement webElement = TestBase.getDriver().findElement(locator);
+            WebElement webElement = getDriver().findElement(locator);
             highlightElement(webElement);
             unhighlightElement(webElement);
         } catch (NoSuchElementException e) {
@@ -67,26 +67,26 @@ public class ElementActions {
 
     //To highlight which button and field the script is currently clicking or typing in
     static public void highlightElement(WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].setAttribute('style', 'background: #ffffe6; border: 2px solid yellow;');", element);
     }
 
     //To remove the highlight
     static public void unhighlightElement(WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].removeAttribute('style','')", element);
     }
 
     //To highlight which button and field the script is currently clicking or typing in
     static public void highlightElementByLocator(By locator) {
         try {
-            WebElement webElement = TestBase.getDriver().findElement(locator);
-            JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+            WebElement webElement = getDriver().findElement(locator);
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].setAttribute('style', 'background: #ffffe6; border: 2px solid yellow;');", webElement);
         } catch (org.openqa.selenium.StaleElementReferenceException e) {
             System.out.println("StaleElementReferenceException, Trying to highlight element again.");
-            WebElement webElement = TestBase.getDriver().findElement(locator);
-            JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+            WebElement webElement = getDriver().findElement(locator);
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].setAttribute('style', 'background: #ffffe6; border: 2px solid yellow;');", webElement);
         }
     }
@@ -94,13 +94,13 @@ public class ElementActions {
     //To remove the highlight
     static public void unhighlightElementByLocator(By locator) {
         try {
-            WebElement webElement = TestBase.getDriver().findElement(locator);
-            JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+            WebElement webElement = getDriver().findElement(locator);
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].removeAttribute('style','')", webElement);
         } catch (org.openqa.selenium.StaleElementReferenceException e) {
             System.out.println("StaleElementReferenceException, Trying to unhighlight element again.");
-            WebElement webElement = TestBase.getDriver().findElement(locator);
-            JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+            WebElement webElement = getDriver().findElement(locator);
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].removeAttribute('style','')", webElement);
         }
     }
@@ -130,7 +130,7 @@ public class ElementActions {
     /////////////////////////////////////////Old Methods/////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static Actions action = new Actions(TestBase.getDriver());
+    public static Actions action = new Actions(getDriver());
 
     //wait till specific element disappear (used mainly for loaders)
     public static void checkDisappearanceOf(By locator) {
@@ -149,7 +149,7 @@ public class ElementActions {
     //Scroll to a specific element using Locator
     public static void scrollPageToElementByLocator(By locator) {
         checkPresenceOf(locator);
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("arguments[0].scrollIntoViewIfNeeded(true);", TestBase.getDriver().findElement(locator));
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoViewIfNeeded(true);", getDriver().findElement(locator));
     }
 
     //Return the status of a specific element is viewed or not
@@ -157,7 +157,7 @@ public class ElementActions {
         WebElement element = retrieveElement(locator);
         Dimension elementSize = element.getSize();
         Point elementLocation = element.getLocation();
-        Dimension viewSize = TestBase.getDriver().manage().window().getSize();
+        Dimension viewSize = getDriver().manage().window().getSize();
 
         int x = viewSize.getWidth();
         int y = viewSize.getHeight();
@@ -264,11 +264,11 @@ public class ElementActions {
     //used to force click on element using locator with java script(include scroll and wait)
     public static void forceClickOnElementByLocator(By locator) {
         checkPresenceOf(locator);
-        WebElement element = TestBase.getDriver().findElement(locator);
+        WebElement element = getDriver().findElement(locator);
         scrollPageToElement(element);
         highlightElement(element);
         unhighlightElement(element);
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("arguments[0].click()", element);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click()", element);
     }
 
     //used to force click on element using WebElement with java script(include scroll and wait)
@@ -276,13 +276,13 @@ public class ElementActions {
         scrollPageToElement(element);
         highlightElement(element);
         unhighlightElement(element);
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("arguments[0].click()", element);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click()", element);
     }
 
     //Used to add date on calendar field using java script
     public static void setTimer(By locator, String date) {
         WebElement element = retrieveElement(locator);
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("arguments[0].value=\'" + date + "\'", element);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].value=\'" + date + "\'", element);
     }
 
     //Some fields have problems with the normal clear() function so in this case use this instead
@@ -301,7 +301,7 @@ public class ElementActions {
     //return the checkbox status (true or false)
     public static boolean isCheckBoxChecked(String locatorID) {
         checkPresenceOf(By.id(locatorID));
-        return (Boolean) ((JavascriptExecutor) TestBase.getDriver()).executeScript("return $('#" + locatorID + "').prop('checked')");
+        return (Boolean) ((JavascriptExecutor) getDriver()).executeScript("return $('#" + locatorID + "').prop('checked')");
     }
 
     //Type in normal text field
@@ -350,7 +350,7 @@ public class ElementActions {
     public static void uploadFile(By locator, String string) {
         try {
 
-            WebElement element = TestBase.getDriver().findElement(locator);
+            WebElement element = getDriver().findElement(locator);
             element.click();
             Thread.sleep(1000);
 
@@ -380,19 +380,19 @@ public class ElementActions {
     //retrieve WebElement (use to define any WebElement object)
     public static WebElement retrieveElement(By locator) {
         checkExistenceOf(locator);
-        return TestBase.getDriver().findElement(locator);
+        return getDriver().findElement(locator);
     }
 
     //retrieve WebElements (use to define any WebElements list)
     public static List<WebElement> retrieveElements(By locator) {
         checkExistenceOf(locator);
-        return TestBase.getDriver().findElements(locator);
+        return getDriver().findElements(locator);
     }
 
     //retrieve WebElement using xpath with different attributes(use to define any WebElements Object)
     public static WebElement retrieveElementByAttributeValue(String attribute, String value) {
         checkExistenceOf(By.xpath("//*[@" + attribute + "='" + value + "']"));
-        return TestBase.getDriver().findElement(By.xpath("//*[@" + attribute + "='" + value + "']"));
+        return getDriver().findElement(By.xpath("//*[@" + attribute + "='" + value + "']"));
     }
 
     //Wrapper for using labels for overwriting text fields (Use according to the HTML hierarchy)
@@ -410,12 +410,12 @@ public class ElementActions {
     //Switching to frame
     public static void switchToFrame(By frameLocator) {
         WebElement frame = retrieveElement(frameLocator);
-        TestBase.getDriver().switchTo().frame(frame);
+        getDriver().switchTo().frame(frame);
     }
 
     //Switching to Original frame
     public static void switchToOriginalFrame(By frameLocator) {
-        TestBase.getDriver().switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
     }
 
     //Wrapper for using labels for writing in text areas (Use according to the HTML hierarchy)
@@ -474,14 +474,6 @@ public class ElementActions {
         searchWithinMenuSwift(locator, YourSelection);
     }
 
-    //Radio button
-    public static void RadioButtonIndex(By locator, int index) {
-        WebElement element = TestBase.getDriver().findElements(locator).get(index);
-        scrollPageToElement(element);
-        highlightElement(element);
-        element.click();
-    }
-
     //Searching and selecting item from open dropdown using XPATH
     public static void searchWithinMenuSwift(By locator, String yourSelection) {
         By elementLocator = By.xpath(getSelector(locator).trim() + "//following-sibling::ul//*[self::a or self::input or self::li][contains(text(),'" + yourSelection + "')]");
@@ -509,7 +501,7 @@ public class ElementActions {
 
     //search withing dropdown that is not using Select item in the HTML but by looping through all the items in the dropdown
     public static void searchWithinMenuSlow(By locator, String YourSelection) {
-        List<WebElement> droppedItems = TestBase.getDriver().findElements(By.xpath(getSelector(locator).trim() + "//ul//*"));
+        List<WebElement> droppedItems = getDriver().findElements(By.xpath(getSelector(locator).trim() + "//ul//*"));
         for (WebElement item : droppedItems) {
             String text = item.getAttribute("textContent").trim();
             if (text.equalsIgnoreCase(YourSelection)) {
@@ -561,6 +553,10 @@ public class ElementActions {
         WebElement element = retrieveElement(locator);
         element.clear();
     }
+    public static void forceClearTestBox(By locator) {
+        WebElement element = retrieveElement(locator);
+        element.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+    }
 
     public static String getDateTime(String dateTime) {
 
@@ -578,7 +574,10 @@ public class ElementActions {
         return berTime2.format(formatter);
     }
 
-
+    public static boolean isElementenabled(By locator) {
+        WebElement element = retrieveElement(locator);
+        return element.isEnabled();
+    }
     public static String capitalizeFirstChar(String str) {
         String output = "";
 
@@ -598,7 +597,7 @@ public class ElementActions {
     }
 
     public static void takeScreenShot(String imageName) {
-        File scrFile = ((TakesScreenshot) TestBase.getDriver()).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 // Now you can do whatever you need to do with it, for example copy somewhere
         try {
             FileUtils.copyFile(scrFile, new File("/src/test/resources/ActualResultsScreenshots/" + imageName + " - screenshot.png"));

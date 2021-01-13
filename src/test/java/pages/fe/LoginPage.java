@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 public class LoginPage {
 
-    private JSONObject pageData = JsonTestDataReader.parseJson("JSONTestData/loginPage.json");
+    private JSONObject pageData = JsonTestDataReader.parseJson("pages/loginPage.json");
     private JSONObject pageLocators = (JSONObject) pageData.get("Locators");
     private JSONObject pageText = (JSONObject) pageData.get("Text");
     public  void login()
@@ -82,7 +82,6 @@ public class LoginPage {
     }
     public void clearText(String elementString ) {
         By elementLocator= getLocator(elementString);
-        ElementActions.clearTestBox(elementLocator);
-
+        ElementActions.forceClearTestBox(elementLocator);
     }
 }

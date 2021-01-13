@@ -1,44 +1,43 @@
 package utilities.actions;
 
-import utilities.base.TestBase;
+import utilities.TestBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
 
-public class BrowserActions {
+public class BrowserActions extends TestBase {
 
     public static void maximizeWindow() {
-        TestBase.getDriver().manage().window().maximize();
+        getDriver().manage().window().maximize();
     }
 
     public static void refreshPage() {
-        TestBase.getDriver().navigate().refresh();
+        getDriver().navigate().refresh();
     }
 
     public static void closeBrowser() {
-        TestBase.getDriver().close();
+        getDriver().close();
 
     }
 
     public static void quitBrowser() {
-        TestBase.quitDriver();
+        quitDriver();
 
     }
 
     public static void restoreView() {
-        TestBase.getDriver().manage().window().maximize();
-        TestBase.getDriver().navigate().refresh();
+        getDriver().manage().window().maximize();
+        getDriver().navigate().refresh();
     }
 
     public static void navigateToPage(String url) {
+        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         System.out.println(url);
-        TestBase.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
-        TestBase.getDriver().navigate().to(url);
+        getDriver().navigate().to(url);
         try {
-            TestBase.getDriver().switchTo().alert().accept();
+            getDriver().switchTo().alert().accept();
         }
         catch (NoAlertPresentException Ex) {
             System.out.println("no alerts appear");
@@ -48,41 +47,41 @@ public class BrowserActions {
 
     //Scrolling
     public static void scrollDownToView(WebElement element) {
-        ((JavascriptExecutor) TestBase.getDriver()).
+        ((JavascriptExecutor) getDriver()).
                 executeScript("arguments[0].scrollIntoView({behavior:'smooth',block: 'center'});",
                         element);
     }
 
     public static void scrollToTop() {
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
     }
 
     public static void zoomOutOrIn(double percentageIndex) {
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("document.body.style.zoom='" + percentageIndex + "'");
+        ((JavascriptExecutor) getDriver()).executeScript("document.body.style.zoom='" + percentageIndex + "'");
     }
 
     public static void scrollVertically(int pixels) {
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("window.scrollBy(0," + pixels + ")", "");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0," + pixels + ")", "");
 
     }
 
     public static void scrollHorizontally(int pixels) {
-        ((JavascriptExecutor) TestBase.getDriver()).executeScript("window.scrollBy(" + pixels + ",0)");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(" + pixels + ",0)");
     }
 
     public static void scrollDownToBottomOfPage() {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) TestBase.getDriver();
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) getDriver();
         javascriptExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
     //Alerts
     public static void approveAlert() {
-        TestBase.getDriver().switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
     }
 
     public static boolean checkIfAlertIsPresent() {
         try {
-            TestBase.getDriver().switchTo().alert();
+            getDriver().switchTo().alert();
             return true;
         } catch (NoAlertPresentException Ex) {
             return false;
@@ -91,7 +90,7 @@ public class BrowserActions {
 
     //check if window is scrolled up or not (Used to test the back to top button)
     public static boolean isWindowScrolledUp() {
-        JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         Long value = (Long) executor.executeScript("return window.pageYOffset;");
         if (value == 0) {
             return true;
@@ -102,12 +101,12 @@ public class BrowserActions {
 
     //Get Browser Title
     public static String getBrowserTitle() {
-        return TestBase.getDriver().getTitle();
+        return getDriver().getTitle();
     }
 
     //Check if window is scrolled down or not
     public static boolean isWindowScrolledDown() {
-        JavascriptExecutor executor = (JavascriptExecutor) TestBase.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         Object currValueInnerHeightObj = executor.executeScript("return window.innerHeight");
         Object currValueYOffsetObj = executor.executeScript("return window.pageYOffset");
         Object docHeightObj = executor.executeScript("return document.body.scrollHeight");
@@ -141,21 +140,21 @@ public class BrowserActions {
 
     public static String getNetworkTabDetails() {
         String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
-        String netData = ((JavascriptExecutor) TestBase.getDriver()).executeScript(scriptToExecute).toString();
+        String netData = ((JavascriptExecutor) getDriver()).executeScript(scriptToExecute).toString();
         System.out.println(netData);
         return  netData;
     }
 
    public static void  SetChromeBrowserLanguage(String language)
    {
-       TestBase.setChromeDriverPrefrences();
-       TestBase.setChromeDriverLanguage(language);
+       setChromePrefrences();
+       setChromeDriverLanguage(language);
        relaunchBrowser();
    }
    public static void relaunchBrowser()
    {
        BrowserActions.closeBrowser();
        BrowserActions.quitBrowser();
-       TestBase.getChromeDriver();
+       getChromeDriver();
    }
 }

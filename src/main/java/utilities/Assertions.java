@@ -29,6 +29,23 @@ public class Assertions {
             Assert.fail();
         }
     }
+    public static void assertElementVisibility(boolean Visibility, By locator) {
+        if (Visibility==true)
+        {
+            assertElementExist(locator);
+        }
+        else
+        {
+            assertElementNotExist(locator);
+        }
+    }
+    public static void assertElementEnabled(boolean enabled, By locator) {
+        boolean value=ElementActions.isElementenabled(locator);
+        if (enabled==value) { System.out.println("Status Assertions passed - Element by locator: [" + locator + "] ."); }
+        else
+            { System.out.println("Status Assertions failed - Element by locator: [" + locator + "].");
+            Assert.fail(); }
+    }
 
     public static void assertOnElementText(By locator, String text) {
         ElementActions.waitForElementToBeVisible(locator);
@@ -37,7 +54,7 @@ public class Assertions {
             assertEquals(elementText, text);
             ElementActions.highlightElementByLocator(locator);
             ElementActions.unhighlightElementByLocator(locator);
-            System.out.println("Assertions passed - Actual Text: [" + elementText + "] does match expected text successfully [" + text + "].");
+            System.out.println("Assertions passed - Actual Text: [" + elementText + "] does match expected text successfully.");
         } catch (AssertionError e) {
 //            System.out.println("Assertions failed - Actual Text: [" + elementText + "] does not match expected text [" + text + "].");
             Assert.fail("Assertions failed - Actual Text: [" + elementText + "] does not match expected text [" + text + "].", e);

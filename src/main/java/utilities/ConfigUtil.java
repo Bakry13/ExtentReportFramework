@@ -29,6 +29,5 @@ public class ConfigUtil {
 //        STURL =reader.getPropertyUsingKey("STURL");
 //        SITURL =reader.getPropertyUsingKey("SITURL");
         WebSTURL =reader.getPropertyUsingKey("WebSTURL");
-
     }
 }
