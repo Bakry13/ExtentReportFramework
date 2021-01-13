@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="11312" started-at="2021-01-12T12:32:17 EET" finished-at="2021-01-12T12:32:28 EET">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Default test" duration-ms="11312" started-at="2021-01-12T12:32:17 EET" finished-at="2021-01-12T12:32:28 EET">
+      <class name="testRunner.FunctionalTestRunner">
+        <test-method status="PASS" signature="initialization()[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="initialization" is-config="true" duration-ms="2727" started-at="2021-01-12T12:32:17 EET" finished-at="2021-01-12T12:32:20 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialization -->
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="setUpClass" is-config="true" duration-ms="706" started-at="2021-01-12T12:32:20 EET" finished-at="2021-01-12T12:32:21 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="runScenario" duration-ms="6414" started-at="2021-01-12T12:32:21 EET" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-01-12T12:32:27 EET">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Login to easy ticket and check elements text in both languages"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Login]"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.WebDriverException">
+            <message>
+              <![CDATA[unknown error: net::ERR_CONNECTION_CLOSED
+  (Session info: chrome=87.0.4280.141)
+Build info: version: '4.0.0-alpha-2', revision: 'f148142cf8', time: '2019-07-01T20:55:26'
+System info: host: 'IT3ANCVR', ip: '192.168.43.229', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.88 (89e2380a3e36c..., userDataDir: C:\Users\V19MOS~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49651}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 4a53a46b55e3b14f73de5a768ef66467]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_CLOSED
+  (Session info: chrome=87.0.4280.141)
+Build info: version: '4.0.0-alpha-2', revision: 'f148142cf8', time: '2019-07-01T20:55:26'
+System info: host: 'IT3ANCVR', ip: '192.168.43.229', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.141, chrome: {chromedriverVersion: 87.0.4280.88 (89e2380a3e36c..., userDataDir: C:\Users\V19MOS~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49651}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 4a53a46b55e3b14f73de5a768ef66467
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:191)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:125)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:576)
+at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:276)
+at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:908)
+at utilities.actions.BrowserActions.navigateToPage(BrowserActions.java:39)
+at pages.fe.LoginPage.login(LoginPage.java:17)
+at stepDefinition.fe.Login_StepDef.userDeeplinksToTicketingTrackerPortal(Login_StepDef.java:15)
+at ✽.I open Easy Ticket Portal(file:///D:/VOIS/ExtentReportFramework/src/test/java/features/FE/ViewGuestLogin.feature:6)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="tearDownClass" is-config="true" duration-ms="538" started-at="2021-01-12T12:32:27 EET" finished-at="2021-01-12T12:32:28 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:testRunner.FunctionalTestRunner@3d51f06e]" name="quitDriver" is-config="true" duration-ms="876" started-at="2021-01-12T12:32:28 EET" finished-at="2021-01-12T12:32:28 EET">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitDriver -->
+      </class> <!-- testRunner.FunctionalTestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
