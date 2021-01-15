@@ -118,15 +118,15 @@ public class LoginPage extends TestBase {
 
     public void assertNoAccessIDInlineError() { Assertions.assertElementNotExist(accessIDInlineError);}
 
-    public void assertsignInButtonEnabled() { Assertions.assertElementEnabled(true,signInButton);}
+    public void assertsignInButtonEnabled() { Assertions.assertElementEnabled(signInButton);}
 
-    public void assertsignInButtonDisabled() { Assertions.assertElementEnabled(false,signInButton);}
+    public void assertsignInButtonDisabled() { Assertions.assertElementDisabled(signInButton);}
 
-    public void assertCustomerNumberDisabled() { Assertions.assertElementEnabled(false,customerNumber);}
+    public void assertCustomerNumberDisabled() { Assertions.assertElementDisabled(customerNumber);}
 
-    public void assertAccountNumberDisabled() { Assertions.assertElementEnabled(false,accountNumber);}
+    public void assertAccountNumberDisabled() { Assertions.assertElementDisabled(accountNumber);}
 
-    public void assertAccessIDDisabled() { Assertions.assertElementEnabled(false,accessID);}
+    public void assertAccessIDDisabled() { Assertions.assertElementDisabled(accessID);}
     //------------------------------Text Assertions----------------------------------
     public void assertSignInHintTitleText() {
         Assertions.assertOnElementText(signInHintTitle,signInHintTitleText[languageIndex]);

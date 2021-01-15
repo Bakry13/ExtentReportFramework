@@ -8,20 +8,7 @@ import static org.testng.Assert.*;
 import static org.testng.Assert.assertEquals;
 
 public class Assertions extends ElementActions{
-    public static void assertElementNotExist(By locator) {
-        boolean elementDisplayed = false;
-        try {
-            elementDisplayed = getElement(locator).isDisplayed();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Assertions failed - Element by locator: [" + locator + "] exist.");
-        }
-        if (elementDisplayed==true)
-        { System.out.println("Assertions passed - Element by locator: [" + locator + "] not exist successfully.");
-            Assert.fail();
-        }
-    }
-
+ //=================================Assert on existance of element=====================
     public static void assertElementExist(By locator) {
         try {
             assert getElement(locator).isDisplayed();
@@ -33,25 +20,39 @@ public class Assertions extends ElementActions{
         }
     }
 
-    public static void assertElementEnabled(boolean enabled, By locator) {
-        boolean value= false;
+    public static void assertElementNotExist(By locator) {
         try {
-            value  = getElement(locator).isEnabled();
+            assert getElement(locator).isDisplayed();
+            System.out.println("Assertions failed - Element by locator: [" + locator + "] not exist.");
+            Assert.fail();
+        } catch (Exception e) {
+            System.out.println("Assertions passed - Element by locator: [" + locator + "] exist successfully.");
+        }
+    }
+//============================assert if element is enabled=================================
+    public static void assertElementEnabled(By locator) {
+        try {
+            assert getElement(locator).isEnabled();
+            System.out.println("Status Assertions passed - Element by locator: [" + locator + "] is enabled");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Assertions failed - Element by locator: [" + locator + "] not exist.");
-        }
-        if (enabled==value)
-            { System.out.println("Status Assertions passed - Element by locator: [" + locator + "] ."); }
-        else
-            { System.out.println("Status Assertions failed - Element by locator: [" + locator + "].");
+            System.out.println("Assertions failed - Element by locator: [" + locator + "] not exist or disabled.");
             Assert.fail();
-            }
+        }
     }
 
+    public static void assertElementDisabled(By locator) {
+        try {
+            assert getElement(locator).isEnabled();
+            System.out.println("Assertions failed - Element by locator: [" + locator + "] not exist or disabled.");
+            Assert.fail();
+        } catch (Exception e) {
+            System.out.println("Assertions failed - Element by locator: [" + locator + "] is enabled.");
+        }
+    }
+//==============================================================================================
     public static void assertOnElementText(By locator, String text) {
-        String elementText = null;
-            elementText = "";
+        String elementText = "";
         try {
             elementText = getElement(locator).getText();
             assertEquals(elementText, text);
@@ -62,6 +63,7 @@ public class Assertions extends ElementActions{
             Assert.fail();
         }
     }
+ //==============================================================================================
 /*
     public static void assertElementVisibility(boolean Visibility, By locator) {
         if (Visibility==true)
@@ -85,11 +87,6 @@ public class Assertions extends ElementActions{
         } catch (AssertionError e) {
             Assert.fail("Assertions failed - Actual Text: [" + elementText + "] does not match expected text [" + text + "].", e);
         }
-    }
-
-    public static void assertInlineErrorMessage(String ExpectedText , By locator) {
-        String Actual = ElementActions.getTextOfElement(locator);
-        Assert.assertEquals(Actual, ExpectedText);
     }
  */
 }

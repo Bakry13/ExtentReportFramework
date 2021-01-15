@@ -4,7 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 import utilities.TestBase;
 
 @CucumberOptions(features = {"src/test/java/features/FE"}, glue = {"stepDefinition/fe", "utilities"}
-        ,tags = ("@THOR-229")
+        //,tags = ("@THOR-229")
         ,plugin = {"pretty","html:test-output/DefaultReport/DefaultReport.html"
         //,"json:test-output/jsonReport/jsonReport.json"
         //,"junit:test-output/junitReport/jsonReport.xml"

@@ -39,11 +39,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | azAZÄÖÜäöüß    | 123           |
 
   @THOR-224 @BC13
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  enters invalid customer number
-  and checks inline error disapears after replacing number with valid number
-  then changes language to German
-  and checks again
+  Scenario Outline: User opens Easy Ticket, enters invalid customer number and checks inline error disapears after replacing number with valid number then changes language to German and checks again
     Given I open Easy Ticket Portal
     When I set "<language>"
     And I type "<customerNumber>" in CustomerNumber TextBox
@@ -58,10 +54,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | validate       | 123           | 123             |
 #=============================================================================================
   @THOR-225 @BC14
-  Scenario Outline: User deeplinks to Easy Ticket
-  enters invalid account number
-  and checks inline error
-  then changes language to German and checks again
+  Scenario Outline: User opens Easy Ticket, enters invalid account number and checks inline error then changes language to German and checks again
     Given I open Easy Ticket Portal
     When I set "<language>"
     And I type "<customerNumber>" in CustomerNumber TextBox
@@ -83,10 +76,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | 123            | azAZÄÖÜäöüß   |
 #===============================================================================================
   @THOR-225 @BC14
-  Scenario Outline: User deeplinks to Easy Ticket
-  enters invalid account number
-  and checks inline error disapears after replacing number with valid number
-  then changes language to German and checks again
+  Scenario Outline: User deeplinks to Easy Ticket, enters invalid account number and checks inline error disapears after replacing number with valid number then changes language to German and checks again
     Given I open Easy Ticket Portal
     When I set "<language>"
     And I type "<customerNumber>" in CustomerNumber TextBox
@@ -101,9 +91,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | 123            | validate      | 123            |
 #===============================================================================================
   @THOR-226 @BC15
-  Scenario Outline: User deeplinks to Easy Ticket
-  enters invalid Access ID and checks inline error
-  then changes language to German and checks again
+  Scenario Outline: User opens Easy Ticket enters invalid Access ID and checks inline error then changes language to German and checks again
     Given I open Easy Ticket Portal
     When I set "<language>"
     And I type "<customerNumber>" in CustomerNumber TextBox
@@ -125,9 +113,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | 123             | ^      ^                                            |
 
   @THOR-226 @BC15
-  Scenario Outline: User deeplinks to Easy Ticket
-  enters invalid Access ID and checks inline error disapears after replacing number with valid number
-  then changes language to German and checks again
+  Scenario Outline: User opens Easy Ticket, enters invalid Access ID and checks inline error disapears after replacing number with valid number then changes language to German and checks again
     Given I open Easy Ticket Portal
     When I set "<language>"
     And I type "<customerNumber>" in CustomerNumber TextBox
@@ -142,10 +128,7 @@ Feature:Validate Guest Login Form
       | Deutsch  | 123             | !@#%^&*  | product2021 |
 #=======================================================================================
   @THOR-227 @GC16
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  enters valid Access ID
-  and checks no inline error
-  and Sign in button is enabled
+  Scenario Outline: User opens Easy Ticket, enters valid Access ID and checks no inline error and Sign in button is enabled
     Given I open Easy Ticket Portal
     When I type "<customerNumber>" in CustomerNumber TextBox
     And I type "<accessID>" in AccessID TextBox
@@ -161,8 +144,7 @@ Feature:Validate Guest Login Form
       | 123             | char_char_char_char_char_char_char_char_char_char_ |
 #================================================================================================
   @THOR-228 @GC17
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  checks entering any two fields will dim the third.
+  Scenario Outline: User opens Easy Ticket, checks entering any two fields will dim the third.
     Given I open Easy Ticket Portal
     When I type "<customerNumber>" in CustomerNumber TextBox
     And I type "<accountNumber>" in AccountNumber TextBox
@@ -175,8 +157,7 @@ Feature:Validate Guest Login Form
       | 123            | 123           |          | accessID       |
 
   @THOR-228 @GC17
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  checks entering any two fields will dim the third and it is enabled when one of the two fields is cleared
+  Scenario Outline: User opens Easy Ticket, checks entering any two fields will dim the third and it is enabled when one of the two fields is cleared
     Given I open Easy Ticket Portal
     When I type "<customerNumber>" in CustomerNumber TextBox
     And I type "<accountNumber>" in AccountNumber TextBox
@@ -195,9 +176,7 @@ Feature:Validate Guest Login Form
       | 123            | 123           |  p123    |
 #============================================================================================
   @THOR-229 @BC18
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  checks login fields enters two invalid inputs
-  and checks inline error (CustomerNumber-AccountNumber)
+  Scenario Outline: User opens Easy Ticket, checks login fields enters two invalid inputs and checks inline error (CustomerNumber-AccountNumber)
     Given I open Easy Ticket Portal
     When I type "<customerNumber>" in CustomerNumber TextBox
     And I type "<accountNumber>" in AccountNumber TextBox
@@ -209,9 +188,7 @@ Feature:Validate Guest Login Form
       | 12             | 12           |
 
   @THOR-229 @BC18
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  checks login fields enters two invalid inputs
-  and checks inline error (CustomerNumber-AccessID)
+  Scenario Outline: User opens Easy Ticket, checks login fields enters two invalid inputs and checks inline error (CustomerNumber-AccessID)
     Given I open Easy Ticket Portal
     When I type "<customerNumber>" in CustomerNumber TextBox
     And I type "<accessID>" in AccessID TextBox
@@ -223,9 +200,7 @@ Feature:Validate Guest Login Form
       | 12             | !@#%^&*  |
 
   @THOR-229 @BC18
-  Scenario Outline: User deeplinks to Easy Ticket ,
-  checks login fields enters two invalid inputs
-  and checks inline error (AccountNumber-AccessID)
+  Scenario Outline: User opens Easy Ticket, checks login fields enters two invalid inputs and checks inline error (AccountNumber-AccessID)
     Given I open Easy Ticket Portal
     When I type "<AccountNumber>" in AccountNumber TextBox
     And I type "<accessID>" in AccessID TextBox
