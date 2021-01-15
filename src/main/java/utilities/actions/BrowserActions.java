@@ -19,12 +19,10 @@ public class BrowserActions extends TestBase {
 
     public static void closeBrowser() {
         getDriver().close();
-
     }
 
     public static void quitBrowser() {
         quitDriver();
-
     }
 
     public static void restoreView() {
@@ -33,7 +31,7 @@ public class BrowserActions extends TestBase {
     }
 
     public static void navigateToPage(String url) {
-        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         System.out.println(url);
         getDriver().navigate().to(url);
         try {

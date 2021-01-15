@@ -27,12 +27,39 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ElementActions extends TestBase {
-    public static WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+    public static WebDriverWait wait; //= new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+    public static Actions action = new Actions(getDriver());
 
-    public static void reloadDriver()
-    {
+    public static WebElement goToElementByLocator(By locator) {
+        WebElement element = null;
+        try {
+            element = getDriver().findElement(locator);
+            action.moveToElement(element).perform();
+            highlightElement(element);
+            unhighlightElement(element);
+        } catch (Exception e) {
+            System.out.println("Element with locator: [" + locator + "] not exist.");
+            e.printStackTrace();
+        }
+        return element;
+    }
+
+    //To highlight which button and field the script is currently clicking or typing in
+    static public void highlightElement(WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        executor.executeScript("arguments[0].setAttribute('style', 'background: #ffffe6; border: 2px solid yellow;');", element);
+    }
+
+    //To remove the highlight
+    static public void unhighlightElement(WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        executor.executeScript("arguments[0].removeAttribute('style','')", element);
+    }
+    //=============================================================================
+ /*   public static void reloadDriver() {
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
     }
+
     public static String findElementTextByIndex(By locator, int index) {
         WebElement element = getDriver().findElements(locator).get(index);
         scrollPageToElement(element);
@@ -63,18 +90,6 @@ public class ElementActions extends TestBase {
             return false;
         }
         return true;
-    }
-
-    //To highlight which button and field the script is currently clicking or typing in
-    static public void highlightElement(WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-        executor.executeScript("arguments[0].setAttribute('style', 'background: #ffffe6; border: 2px solid yellow;');", element);
-    }
-
-    //To remove the highlight
-    static public void unhighlightElement(WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-        executor.executeScript("arguments[0].removeAttribute('style','')", element);
     }
 
     //To highlight which button and field the script is currently clicking or typing in
@@ -129,8 +144,6 @@ public class ElementActions extends TestBase {
     /////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////Old Methods/////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static Actions action = new Actions(getDriver());
 
     //wait till specific element disappear (used mainly for loaders)
     public static void checkDisappearanceOf(By locator) {
@@ -553,9 +566,10 @@ public class ElementActions extends TestBase {
         WebElement element = retrieveElement(locator);
         element.clear();
     }
+
     public static void forceClearTestBox(By locator) {
         WebElement element = retrieveElement(locator);
-        element.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
 
     public static String getDateTime(String dateTime) {
@@ -578,6 +592,7 @@ public class ElementActions extends TestBase {
         WebElement element = retrieveElement(locator);
         return element.isEnabled();
     }
+
     public static String capitalizeFirstChar(String str) {
         String output = "";
 
@@ -604,5 +619,5 @@ public class ElementActions extends TestBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

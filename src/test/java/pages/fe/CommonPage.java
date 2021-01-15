@@ -1,12 +1,13 @@
 package pages.fe;
 
 import org.openqa.selenium.By;
+import utilities.Assertions;
 import utilities.ConfigUtil;
+import utilities.TestBase;
 import utilities.actions.BrowserActions;
 import utilities.actions.ElementActions;
 
-public class CommonPage {
-    public static int languageIndex = 0;
+public class CommonPage extends TestBase{
     //=============================Locators==================================
     static By changeLanguageButton = By.id("ChangeLanguage_btn");
     By termsFooter = By.id("Impressum_dl");
@@ -23,7 +24,7 @@ public class CommonPage {
 
     public static String getChangeLanguageButtonText()
     {
-        String language= ElementActions.getTextOfElement(changeLanguageButton);
+        String language= ElementActions.goToElementByLocator(changeLanguageButton).getText();
         return language;
     }
 
@@ -41,7 +42,7 @@ public class CommonPage {
     public static void setLanguage(String language)
     {
         if (getChangeLanguageButtonText().equals(language))
-            ElementActions.forceClickOnElementByLocator(changeLanguageButton);
+            ElementActions.goToElementByLocator(changeLanguageButton).click();
         System.out.println(language+" is selected");
         if (language.equals("English"))
             languageIndex = 0;
@@ -52,5 +53,20 @@ public class CommonPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    //===================================Text Assertions=====================================
+    public void assertChangeLanguageButtonText(String expectedLanguage)
+    {
+        Assertions.assertOnElementText(changeLanguageButton,expectedLanguage);
+    }
+
+    public void assertTermsFooterText()
+    {
+        Assertions.assertOnElementText(termsFooter,termsFooterText[languageIndex]);
+    }
+
+    public void assertprivacyFooterText()
+    {
+        Assertions.assertOnElementText(privacyFooter,privacyFooterText[languageIndex]);
     }
 }

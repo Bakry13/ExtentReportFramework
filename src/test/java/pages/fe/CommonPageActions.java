@@ -31,7 +31,7 @@ public class CommonPageActions
         return locator;
     }
     //================================Common Website Actions====================================
-    public  void login()
+ /*   public  void login()
     {
         BrowserActions.navigateToPage(ConfigUtil.WebSTURL);
     }
@@ -94,6 +94,6 @@ public class CommonPageActions
     }
     public void clearText(String elementString ) {
         By elementLocator= getLocator(elementString);
-        ElementActions.forceClearTestBox(elementLocator);
-    }
+        ElementActions.forceClearTextBox(elementLocator);
+    }*/
 }

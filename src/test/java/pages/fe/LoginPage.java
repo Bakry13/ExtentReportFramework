@@ -1,14 +1,16 @@
 package pages.fe;
 
+import org.openqa.selenium.Keys;
 import utilities.Assertions;
 import utilities.ConfigUtil;
+import utilities.TestBase;
 import utilities.actions.BrowserActions;
 import utilities.actions.ElementActions;
 import utilities.readers.JsonTestDataReader;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 
-public class LoginPage {
+public class LoginPage extends TestBase {
     //=============================Locators==================================
     By loginPageTitle = By.id("LoginPageTitle_lbl");
     By loginPageSubtitle = By.id("LoginPageSubtitle_lbl");
@@ -33,10 +35,10 @@ public class LoginPage {
             {"You can find the required info on the invoice or the welcome letter."
             ,"Sie finden die benötigten Daten auf Ihrer Rechnung oder auf Ihrem Willkommensbrief."};
     String customerNumberInlineErrorText[] =
-            {"Entry doesn't match the requested format. Please enter the customer number."
+            {"Entry doesn't match the requested format.\nPlease enter the customer number."
             , "Eingabe entspricht nicht dem gültigen Format.\nBitte tragen Sie Ihre Kundennummer ein."};
     String accountNumberInlineErrorText[] =
-            {"Entry doesn't match the requested format. Please enter the account number."
+            {"Entry doesn't match the requested format.\nPlease enter the account number."
             , "Eingabe entspricht nicht dem gültigen Format.\nBitte tragen Sie Ihre Rechnungskonto Nr. ein."};
     String accessIDInlineErrorText[] =
             {"Please enter a valid access number."
@@ -44,6 +46,30 @@ public class LoginPage {
     String signInButtonText[] = {"Sign in", "Einloggen"};
     String termsFooterText[] = {"Terms", "Impressum"};
     String privacyFooterText[] = {"Privacy", "Datenschutz"};
+    //===================================Actions===================================
+    public void typeInCustomerNumber(String customerNumberText) {
+        ElementActions.goToElementByLocator(customerNumber).sendKeys(customerNumberText+"\t");
+    }
+
+    public void typeInAccountNumber(String accountNumberText) {
+        ElementActions.goToElementByLocator(accountNumber).sendKeys(accountNumberText+"\t");
+    }
+
+    public void typeInAccessID(String accessIDText) {
+        try { ElementActions.goToElementByLocator(accessID).sendKeys(accessIDText+"\t");
+        } catch (Exception e) { e.printStackTrace(); } }
+
+    public void clearCustomerNumber() {
+        ElementActions.goToElementByLocator(customerNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+    }
+
+    public void clearAccountNumber() {
+        ElementActions.goToElementByLocator(accountNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+    }
+
+    public void clearAccessID() {
+        ElementActions.goToElementByLocator(accessID).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+    }
     //-----------------------------------Assertions--------------------------------
     public void assertSignInHintTitle()
     {
@@ -80,18 +106,49 @@ public class LoginPage {
         Assertions.assertElementExist(changeLanguageButton);
     }
 
-    public void assertSignInHintTitleText()
-    {
-        Assertions.assertOnElementText(signInHintTitle,signInHintTitleText[CommonPage.languageIndex]);
+    public void assertCustomerNumberInlineError() { Assertions.assertElementExist(customerNumberInlineError);}
+
+    public void assertNoCustomerNumberInlineError() { Assertions.assertElementNotExist(customerNumberInlineError);}
+
+    public void assertAccountNumberInlineError() { Assertions.assertElementExist(accountNumberInlineError);}
+
+    public void assertNoAccountNumberInlineError() { Assertions.assertElementNotExist(accountNumberInlineError);}
+
+    public void assertAccessIDInlineError() { Assertions.assertElementExist(accessIDInlineError);}
+
+    public void assertNoAccessIDInlineError() { Assertions.assertElementNotExist(accessIDInlineError);}
+
+    public void assertsignInButtonEnabled() { Assertions.assertElementEnabled(true,signInButton);}
+
+    public void assertsignInButtonDisabled() { Assertions.assertElementEnabled(false,signInButton);}
+
+    public void assertCustomerNumberDisabled() { Assertions.assertElementEnabled(false,customerNumber);}
+
+    public void assertAccountNumberDisabled() { Assertions.assertElementEnabled(false,accountNumber);}
+
+    public void assertAccessIDDisabled() { Assertions.assertElementEnabled(false,accessID);}
+    //------------------------------Text Assertions----------------------------------
+    public void assertSignInHintTitleText() {
+        Assertions.assertOnElementText(signInHintTitle,signInHintTitleText[languageIndex]);
     }
 
-    public void assertSignInHintBodyText()
-    {
-        Assertions.assertOnElementText(signInHintBody,signInHintBodyText[CommonPage.languageIndex]);
+    public void assertSignInHintBodyText() {
+        Assertions.assertOnElementText(signInHintBody,signInHintBodyText[languageIndex]);
     }
 
-    public void assertSignInButtonText()
-    {
-        Assertions.assertOnElementText(signInButton,signInButtonText[CommonPage.languageIndex]);
+    public void assertSignInButtonText() {
+        Assertions.assertOnElementText(signInButton,signInButtonText[languageIndex]);
+    }
+
+    public void assertCustomerNumberInlineErrorText() {
+        Assertions.assertOnElementText(customerNumberInlineError,customerNumberInlineErrorText[languageIndex]);
+    }
+
+    public void assertAccountNumberInlineErrorText() {
+        Assertions.assertOnElementText(accountNumberInlineError,accountNumberInlineErrorText[languageIndex]);
+    }
+
+    public void assertaccessIDInlineErrorText() {
+        Assertions.assertOnElementText(accessIDInlineError,accessIDInlineErrorText[languageIndex]);
     }
 }

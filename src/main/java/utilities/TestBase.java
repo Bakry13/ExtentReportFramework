@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase extends AbstractTestNGCucumberTests {
+    public static int languageIndex = 0;
     public static String browserType = "";
     public static WebDriver driver;
     static ChromeOptions chromeOptions = new ChromeOptions();
@@ -28,12 +29,15 @@ public class TestBase extends AbstractTestNGCucumberTests {
         switch (language) {
             case "English":
                 chromeOptions.addArguments("--lang=en");
+                languageIndex = 0;
                 break;
             case "Deutsch":
                 chromeOptions.addArguments("--lang=de");
+                languageIndex = 1;
                 break;
             case "Arabic":
                 chromeOptions.addArguments("--lang=ar");
+                languageIndex = 1;
                 break;
             default:
                 System.out.println("Undefined language");

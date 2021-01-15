@@ -63,7 +63,7 @@ at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:276)
 at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:908)
 at utilities.actions.BrowserActions.navigateToPage(BrowserActions.java:39)
 at pages.fe.LoginPage.login(LoginPage.java:17)
-at stepDefinition.fe.Login_StepDef.userDeeplinksToTicketingTrackerPortal(Login_StepDef.java:15)
+at stepDefinition.fe.ViewGuestLogin.userDeeplinksToTicketingTrackerPortal(Login_StepDef.java:15)
 at ✽.I open Easy Ticket Portal(file:///D:/VOIS/ExtentReportFramework/src/test/java/features/FE/ViewGuestLogin.feature:6)
 ]]>
             </full-stacktrace>
