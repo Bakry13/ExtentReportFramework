@@ -30,7 +30,7 @@ public class ElementActions extends TestBase {
     public static WebDriverWait wait; //= new WebDriverWait(getDriver(), Duration.ofSeconds(5));
     public static Actions action = new Actions(getDriver());
 
-    public static WebElement goToElementByLocator(By locator) {
+    public static WebElement getElement(By locator) {
         WebElement element = null;
         try {
             element = getDriver().findElement(locator);

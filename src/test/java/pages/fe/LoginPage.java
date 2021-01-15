@@ -48,27 +48,27 @@ public class LoginPage extends TestBase {
     String privacyFooterText[] = {"Privacy", "Datenschutz"};
     //===================================Actions===================================
     public void typeInCustomerNumber(String customerNumberText) {
-        ElementActions.goToElementByLocator(customerNumber).sendKeys(customerNumberText+"\t");
+        ElementActions.getElement(customerNumber).sendKeys(customerNumberText+"\t");
     }
 
     public void typeInAccountNumber(String accountNumberText) {
-        ElementActions.goToElementByLocator(accountNumber).sendKeys(accountNumberText+"\t");
+        ElementActions.getElement(accountNumber).sendKeys(accountNumberText+"\t");
     }
 
     public void typeInAccessID(String accessIDText) {
-        try { ElementActions.goToElementByLocator(accessID).sendKeys(accessIDText+"\t");
+        try { ElementActions.getElement(accessID).sendKeys(accessIDText+"\t");
         } catch (Exception e) { e.printStackTrace(); } }
 
     public void clearCustomerNumber() {
-        ElementActions.goToElementByLocator(customerNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        ElementActions.getElement(customerNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
 
     public void clearAccountNumber() {
-        ElementActions.goToElementByLocator(accountNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        ElementActions.getElement(accountNumber).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
 
     public void clearAccessID() {
-        ElementActions.goToElementByLocator(accessID).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        ElementActions.getElement(accessID).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
     //-----------------------------------Assertions--------------------------------
     public void assertSignInHintTitle()

@@ -24,7 +24,7 @@ public class CommonPage extends TestBase{
 
     public static String getChangeLanguageButtonText()
     {
-        String language= ElementActions.goToElementByLocator(changeLanguageButton).getText();
+        String language= ElementActions.getElement(changeLanguageButton).getText();
         return language;
     }
 
@@ -42,7 +42,7 @@ public class CommonPage extends TestBase{
     public static void setLanguage(String language)
     {
         if (getChangeLanguageButtonText().equals(language))
-            ElementActions.goToElementByLocator(changeLanguageButton).click();
+            ElementActions.getElement(changeLanguageButton).click();
         System.out.println(language+" is selected");
         if (language.equals("English"))
             languageIndex = 0;

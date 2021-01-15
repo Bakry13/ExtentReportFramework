@@ -11,7 +11,7 @@ public class Assertions extends ElementActions{
     public static void assertElementNotExist(By locator) {
         boolean elementDisplayed = false;
         try {
-            elementDisplayed = goToElementByLocator(locator).isDisplayed();
+            elementDisplayed = getElement(locator).isDisplayed();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Assertions failed - Element by locator: [" + locator + "] exist.");
@@ -24,7 +24,7 @@ public class Assertions extends ElementActions{
 
     public static void assertElementExist(By locator) {
         try {
-            assert goToElementByLocator(locator).isDisplayed();
+            assert getElement(locator).isDisplayed();
             System.out.println("Assertions passed - Element by locator: [" + locator + "] exist successfully.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class Assertions extends ElementActions{
     public static void assertElementEnabled(boolean enabled, By locator) {
         boolean value= false;
         try {
-            value  = goToElementByLocator(locator).isEnabled();
+            value  = getElement(locator).isEnabled();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Assertions failed - Element by locator: [" + locator + "] not exist.");
@@ -53,7 +53,7 @@ public class Assertions extends ElementActions{
         String elementText = null;
             elementText = "";
         try {
-            elementText = goToElementByLocator(locator).getText();
+            elementText = getElement(locator).getText();
             assertEquals(elementText, text);
             System.out.println("Assertions passed - Actual Text: [" + elementText + "] does match expected text successfully.");
         } catch (Exception e) {
