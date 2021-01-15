@@ -16,7 +16,7 @@ public class ViewGuestLogin extends LoginPage
     //=====Scenario 1: Login to easy ticket and check that elements exist======
     @Given("I open Easy Ticket Portal")
     public void userDeeplinksToTicketingTrackerPortal() {
-        CommonPage.login();
+        login();
     }
 
     @When("I check login page content")

@@ -14,7 +14,7 @@ public class ConfigUtil {
     public static String Attachement_URL;
     public static String STURL;
     public static String SITURL;
-    public static String WebSTURL;
+    public static String Web_ST_URL;
 
     public static void loadTestConfigurations() {
         PropertiesReader reader = new PropertiesReader( "config.properties");
@@ -28,6 +28,6 @@ public class ConfigUtil {
 //        Attachement_URL =reader.getPropertyUsingKey("Attachement_URL");
 //        STURL =reader.getPropertyUsingKey("STURL");
 //        SITURL =reader.getPropertyUsingKey("SITURL");
-        WebSTURL =reader.getPropertyUsingKey("WebSTURL");
+        Web_ST_URL =reader.getPropertyUsingKey("Web_ST_URL");
     }
 }

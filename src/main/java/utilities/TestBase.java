@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase extends AbstractTestNGCucumberTests {
     public static int languageIndex = 0;
     public static String browserType = "";
+    public static String environmentURL = "ST";
     public static WebDriver driver;
     static ChromeOptions chromeOptions = new ChromeOptions();
     static FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -89,18 +90,18 @@ public class TestBase extends AbstractTestNGCucumberTests {
     }
     //---------------------------------BrowserType-------------------------------------
     @BeforeTest
-    @Parameters("Browser")
-    public static void setBrowserType(@Optional("Chrome") String Browser) {
-        if (Browser.equalsIgnoreCase("Chrome")) {
+    @Parameters("browser")
+    public static void setBrowserType(@Optional("Chrome") String browser) {
+        if (browser.equalsIgnoreCase("Chrome")) {
             setChromePrefrences();
             getChromeDriver();
             browserType ="Chrome";
-        } else if (Browser.equalsIgnoreCase("Firefox")) {
+        } else if (browser.equalsIgnoreCase("Firefox")) {
             setFirefoxCapabilities();
             getFirefoxDriver();
             browserType ="Firefox";
         }
-        else if (Browser.equalsIgnoreCase("IE")) {
+        else if (browser.equalsIgnoreCase("IE")) {
             setIeCapabilities();
             getIeDriver();
             browserType ="IE";
@@ -114,11 +115,19 @@ public class TestBase extends AbstractTestNGCucumberTests {
     {
         return driver;
     }
-//-----------------------------------Test Cases Annotations--------------------------------
-    //@Before
-    public static void initialization() {
-        BrowserActions.navigateToPage(ConfigUtil.WebSTURL);//get URL
+//--------------------------------------Test Environment------------------------------------
+    @BeforeTest
+    @Parameters("environment")
+    public static void setEnvironmentURL(@Optional("ST") String environment) {
+        if(environment.equals("ST"))
+            environmentURL = ConfigUtil.Web_ST_URL;
+        else if(environment.equals("SIT"));
     }
+//-----------------------------------Test Cases Annotations--------------------------------
+    public static void login()
+{
+    BrowserActions.navigateToPage(environmentURL);
+}
 
     @AfterTest
     public static void quitDriver() // call this method to get the driver object and launch the browser

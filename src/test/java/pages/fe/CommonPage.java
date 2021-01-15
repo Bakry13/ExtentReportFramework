@@ -17,11 +17,6 @@ public class CommonPage extends TestBase{
     String termsFooterText[] = {"Terms", "Impressum"};
     String privacyFooterText[] = {"Privacy", "Datenschutz"};
     //=====================================Actions=========================================
-    public static void login()
-    {
-        BrowserActions.navigateToPage(ConfigUtil.WebSTURL);
-    }
-
     public static String getChangeLanguageButtonText()
     {
         String language= ElementActions.getElement(changeLanguageButton).getText();

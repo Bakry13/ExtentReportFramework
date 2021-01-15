@@ -2,7 +2,8 @@
 
 <suite name="Testng Cucumber Suite">
     <test name="Chrome Test">
-        <parameter name="Browser" value="Chrome" />
+        <parameter name="browser" value="Chrome" /> <!-- Chrome or Firefox or IE -->
+        <parameter name="environment" value="ST" /> <!-- ST or SIT -->
         <classes>
             <class name="testRunner.FunctionalTestRunner"></class>
         </classes>
