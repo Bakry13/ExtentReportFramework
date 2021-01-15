@@ -118,9 +118,9 @@ public class LoginPage extends TestBase {
 
     public void assertNoAccessIDInlineError() { Assertions.assertElementNotExist(accessIDInlineError);}
 
-    public void assertsignInButtonEnabled() { Assertions.assertElementEnabled(signInButton);}
+    public void assertSignInButtonEnabled() { Assertions.assertElementEnabled(signInButton);}
 
-    public void assertsignInButtonDisabled() { Assertions.assertElementDisabled(signInButton);}
+    public void assertSignInButtonDisabled() { Assertions.assertElementDisabled(signInButton);}
 
     public void assertCustomerNumberDisabled() { Assertions.assertElementDisabled(customerNumber);}
 
@@ -129,26 +129,26 @@ public class LoginPage extends TestBase {
     public void assertAccessIDDisabled() { Assertions.assertElementDisabled(accessID);}
     //------------------------------Text Assertions----------------------------------
     public void assertSignInHintTitleText() {
-        Assertions.assertOnElementText(signInHintTitle,signInHintTitleText[languageIndex]);
+        Assertions.assertElementText(signInHintTitle,signInHintTitleText[languageIndex]);
     }
 
     public void assertSignInHintBodyText() {
-        Assertions.assertOnElementText(signInHintBody,signInHintBodyText[languageIndex]);
+        Assertions.assertElementText(signInHintBody,signInHintBodyText[languageIndex]);
     }
 
     public void assertSignInButtonText() {
-        Assertions.assertOnElementText(signInButton,signInButtonText[languageIndex]);
+        Assertions.assertElementText(signInButton,signInButtonText[languageIndex]);
     }
 
     public void assertCustomerNumberInlineErrorText() {
-        Assertions.assertOnElementText(customerNumberInlineError,customerNumberInlineErrorText[languageIndex]);
+        Assertions.assertElementText(customerNumberInlineError,customerNumberInlineErrorText[languageIndex]);
     }
 
     public void assertAccountNumberInlineErrorText() {
-        Assertions.assertOnElementText(accountNumberInlineError,accountNumberInlineErrorText[languageIndex]);
+        Assertions.assertElementText(accountNumberInlineError,accountNumberInlineErrorText[languageIndex]);
     }
 
     public void assertaccessIDInlineErrorText() {
-        Assertions.assertOnElementText(accessIDInlineError,accessIDInlineErrorText[languageIndex]);
+        Assertions.assertElementText(accessIDInlineError,accessIDInlineErrorText[languageIndex]);
     }
 }

@@ -28,7 +28,7 @@ public class ValidateGuestLogin_StepDef extends LoginPage {
 
     @Then("SignInButton status should be enabled")
     public void sign_in_button_status_should_be_enabled() {
-        assertsignInButtonEnabled();
+        assertSignInButtonEnabled();
     }
 //=============================THOR-224==========================================
     @When("I clear CustomerNumber TextBox")
@@ -43,7 +43,7 @@ public class ValidateGuestLogin_StepDef extends LoginPage {
 
     @Then("SignInButton status should be disabled")
     public void sign_in_button_status_should_be_disabled() {
-        assertsignInButtonDisabled();
+        assertSignInButtonDisabled();
     }
 
     @Then("I should see CustomerNumberInlineError has the translated text in login page")

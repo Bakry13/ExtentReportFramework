@@ -57,16 +57,16 @@ public class CommonPage extends TestBase{
     //===================================Text Assertions=====================================
     public void assertChangeLanguageButtonText(String expectedLanguage)
     {
-        Assertions.assertOnElementText(changeLanguageButton,expectedLanguage);
+        Assertions.assertElementText(changeLanguageButton,expectedLanguage);
     }
 
     public void assertTermsFooterText()
     {
-        Assertions.assertOnElementText(termsFooter,termsFooterText[languageIndex]);
+        Assertions.assertElementText(termsFooter,termsFooterText[languageIndex]);
     }
 
     public void assertprivacyFooterText()
     {
-        Assertions.assertOnElementText(privacyFooter,privacyFooterText[languageIndex]);
+        Assertions.assertElementText(privacyFooter,privacyFooterText[languageIndex]);
     }
 }

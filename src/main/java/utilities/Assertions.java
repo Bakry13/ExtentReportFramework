@@ -51,7 +51,7 @@ public class Assertions extends ElementActions{
         }
     }
 //==============================================================================================
-    public static void assertOnElementText(By locator, String text) {
+    public static void assertElementText(By locator, String text) {
         String elementText = "";
         try {
             elementText = getElement(locator).getText();
