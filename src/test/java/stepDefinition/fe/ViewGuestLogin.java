@@ -1,15 +1,10 @@
 package stepDefinition.fe;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.fe.CommonPage;
-import pages.fe.CommonPageActions;
 import pages.fe.LoginPage;
-import utilities.Assertions;
-import utilities.actions.BrowserActions;
-import utilities.common.Paths;
 
 public class ViewGuestLogin extends LoginPage
 {

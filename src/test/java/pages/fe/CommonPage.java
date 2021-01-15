@@ -1,10 +1,8 @@
 package pages.fe;
 
 import org.openqa.selenium.By;
-import utilities.Assertions;
-import utilities.ConfigUtil;
+import utilities.assertions.Assertions_FE;
 import utilities.TestBase;
-import utilities.actions.BrowserActions;
 import utilities.actions.ElementActions;
 
 public class CommonPage extends TestBase{
@@ -52,16 +50,16 @@ public class CommonPage extends TestBase{
     //===================================Text Assertions=====================================
     public void assertChangeLanguageButtonText(String expectedLanguage)
     {
-        Assertions.assertElementText(changeLanguageButton,expectedLanguage);
+        Assertions_FE.assertElementText(changeLanguageButton,expectedLanguage);
     }
 
     public void assertTermsFooterText()
     {
-        Assertions.assertElementText(termsFooter,termsFooterText[languageIndex]);
+        Assertions_FE.assertElementText(termsFooter,termsFooterText[languageIndex]);
     }
 
     public void assertprivacyFooterText()
     {
-        Assertions.assertElementText(privacyFooter,privacyFooterText[languageIndex]);
+        Assertions_FE.assertElementText(privacyFooter,privacyFooterText[languageIndex]);
     }
 }

@@ -43,7 +43,7 @@ public class JSONActions {
         return result;
     }
 
-    /**
+    /***************************************************************************************
      * @param response JSON response from the API.
      * @param jsonPath JSON Path to get the list required
      * @return Returns the list as hash map
@@ -68,7 +68,7 @@ public class JSONActions {
         return result;
     }
 
-    /**
+    /************************************************************************************
      * @param response JSON response from the API.
      * @param jsonPath JSON Path to get the list required
      * @return Returns  map
@@ -93,7 +93,7 @@ public class JSONActions {
         return result;
     }
 
-    /**
+    /**************************************************************************************
      * @param hashMap Hash map to work on.
      * @param key     Key used to get value from the hash map
      * @return Returns the value retrieved by the key
@@ -112,7 +112,7 @@ public class JSONActions {
         }
     }
 
-    /**
+    /****************************************************************************************
      * @param hashMap Hash map to work on.
      * @param key1    First key used to get another hash map
      * @param key2    Second key used to get the value from the second hash map
@@ -133,7 +133,7 @@ public class JSONActions {
         }
     }
 
-    /**
+    /***********************************************************************************
      * @param filename Of jsonFile which be read
      * @return content of json file which be read
      */
@@ -150,11 +150,11 @@ public class JSONActions {
         return jsonArray.toString();
     }
 
-    /**
+    /************************************************************************************
      * @param response for Actual Response
      * @return String of Response after arrangement
      */
-    public static String ResponseTypeToStringTypeToRearrangeByJsonArray(Response response) {
+    public static String ResponseToStringByJsonArray(Response response) {
         String responseToString = response.asString();
         JSONParser parser = new JSONParser();
         Object obj = null;
@@ -167,7 +167,7 @@ public class JSONActions {
         JSONArray jsonObject = (JSONArray) obj;
         return jsonObject.toString();
     }
-
+//*******************************************************************************************
     public static JSONObject setChangeValuesOfContactData(JSONObject note, String fieldToBeChanged, String value){
 
         JSONObject  actualContactDetailsObject = (JSONObject) note.get("newContactDetails");

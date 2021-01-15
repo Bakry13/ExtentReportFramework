@@ -2,7 +2,6 @@ package stepDefinition.fe;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.fe.LoginPage;
-import utilities.Assertions;
 
 public class ValidateGuestLogin_StepDef extends LoginPage {
     //==========================THOR-223=======================================

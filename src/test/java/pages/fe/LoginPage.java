@@ -1,13 +1,9 @@
 package pages.fe;
 
 import org.openqa.selenium.Keys;
-import utilities.Assertions;
-import utilities.ConfigUtil;
+import utilities.assertions.Assertions_FE;
 import utilities.TestBase;
-import utilities.actions.BrowserActions;
 import utilities.actions.ElementActions;
-import utilities.readers.JsonTestDataReader;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 
 public class LoginPage extends TestBase {
@@ -46,6 +42,18 @@ public class LoginPage extends TestBase {
     String signInButtonText[] = {"Sign in", "Einloggen"};
     String termsFooterText[] = {"Terms", "Impressum"};
     String privacyFooterText[] = {"Privacy", "Datenschutz"};
+    String wrongCustomerClassText[] = {"Easy Ticket is only available to Vodafone business customers.\n" +
+            "Please contact your responsible customer service"
+            ,"Easy Ticket steht ausschließlich Vodafone Geschäftskunden zur Verfügung.\n" +
+            "Bitte wenden Sie sich an Ihre zuständige Kundenbetreuung."};
+    String dataWasNotFoundText[] = {"The entered data is not found. Easy Ticket is only available to Vodafone business customers.\n" +
+            "Please contact your responsible customer service."
+            ,"Die von Ihnen eingegeben Daten wurden nicht gefunden.  \n" +
+            "Bitte beachten Sie, dass Easy Ticket nur für Festnetzanschlüsse von Vodafone Geschäftskunden zur Verfügung steht.\n" +
+            "Bitte wenden Sie sich an Ihre zuständige Kundenbetreuung."};
+    String noAvailableProductText[] = {"No product available.","Kein Produkt vorhanden."};
+    String dataDoesNotMatchText[] = {"The data you have entered do not match the same customer account. Please check your entered data."
+            ,"Die von Ihnen eingegeben Daten passen nicht zum selben Kundenkonto. Bitte überprüfen Sie Ihre Eingaben."};
     //===================================Actions===================================
     public void typeInCustomerNumber(String customerNumberText) {
         ElementActions.getElement(customerNumber).sendKeys(customerNumberText+"\t");
@@ -70,85 +78,105 @@ public class LoginPage extends TestBase {
     public void clearAccessID() {
         ElementActions.getElement(accessID).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
+
+    public void clickSignIn() {
+        ElementActions.getElement(signInButton).click();
+    }
     //-----------------------------------Assertions--------------------------------
     public void assertSignInHintTitle()
     {
-        Assertions.assertElementExist(signInHintTitle);
+        Assertions_FE.assertElementExist(signInHintTitle);
     }
 
     public void assertSignInHintBody()
     {
-        Assertions.assertElementExist(signInHintBody);
+        Assertions_FE.assertElementExist(signInHintBody);
     }
 
     public void assertCustomerNumber()
     {
-        Assertions.assertElementExist(customerNumber);
+        Assertions_FE.assertElementExist(customerNumber);
     }
 
     public void assertAccountNumber()
     {
-        Assertions.assertElementExist(accountNumber);
+        Assertions_FE.assertElementExist(accountNumber);
     }
 
     public void assertAccessID()
     {
-        Assertions.assertElementExist(accessID);
+        Assertions_FE.assertElementExist(accessID);
     }
 
     public void assertSignInButton()
     {
-        Assertions.assertElementExist(signInButton);
+        Assertions_FE.assertElementExist(signInButton);
     }
 
     public void assertChangeLanguageButton()
     {
-        Assertions.assertElementExist(changeLanguageButton);
+        Assertions_FE.assertElementExist(changeLanguageButton);
     }
 
-    public void assertCustomerNumberInlineError() { Assertions.assertElementExist(customerNumberInlineError);}
+    public void assertCustomerNumberInlineError() { Assertions_FE.assertElementExist(customerNumberInlineError);}
 
-    public void assertNoCustomerNumberInlineError() { Assertions.assertElementNotExist(customerNumberInlineError);}
+    public void assertNoCustomerNumberInlineError() { Assertions_FE.assertElementNotExist(customerNumberInlineError);}
 
-    public void assertAccountNumberInlineError() { Assertions.assertElementExist(accountNumberInlineError);}
+    public void assertAccountNumberInlineError() { Assertions_FE.assertElementExist(accountNumberInlineError);}
 
-    public void assertNoAccountNumberInlineError() { Assertions.assertElementNotExist(accountNumberInlineError);}
+    public void assertNoAccountNumberInlineError() { Assertions_FE.assertElementNotExist(accountNumberInlineError);}
 
-    public void assertAccessIDInlineError() { Assertions.assertElementExist(accessIDInlineError);}
+    public void assertAccessIDInlineError() { Assertions_FE.assertElementExist(accessIDInlineError);}
 
-    public void assertNoAccessIDInlineError() { Assertions.assertElementNotExist(accessIDInlineError);}
+    public void assertNoAccessIDInlineError() { Assertions_FE.assertElementNotExist(accessIDInlineError);}
 
-    public void assertSignInButtonEnabled() { Assertions.assertElementEnabled(signInButton);}
+    public void assertSignInButtonEnabled() { Assertions_FE.assertElementEnabled(signInButton);}
 
-    public void assertSignInButtonDisabled() { Assertions.assertElementDisabled(signInButton);}
+    public void assertSignInButtonDisabled() { Assertions_FE.assertElementDisabled(signInButton);}
 
-    public void assertCustomerNumberDisabled() { Assertions.assertElementDisabled(customerNumber);}
+    public void assertCustomerNumberDisabled() { Assertions_FE.assertElementDisabled(customerNumber);}
 
-    public void assertAccountNumberDisabled() { Assertions.assertElementDisabled(accountNumber);}
+    public void assertAccountNumberDisabled() { Assertions_FE.assertElementDisabled(accountNumber);}
 
-    public void assertAccessIDDisabled() { Assertions.assertElementDisabled(accessID);}
+    public void assertAccessIDDisabled() { Assertions_FE.assertElementDisabled(accessID);}
     //------------------------------Text Assertions----------------------------------
     public void assertSignInHintTitleText() {
-        Assertions.assertElementText(signInHintTitle,signInHintTitleText[languageIndex]);
+        Assertions_FE.assertElementText(signInHintTitle,signInHintTitleText[languageIndex]);
     }
 
     public void assertSignInHintBodyText() {
-        Assertions.assertElementText(signInHintBody,signInHintBodyText[languageIndex]);
+        Assertions_FE.assertElementText(signInHintBody,signInHintBodyText[languageIndex]);
     }
 
     public void assertSignInButtonText() {
-        Assertions.assertElementText(signInButton,signInButtonText[languageIndex]);
+        Assertions_FE.assertElementText(signInButton,signInButtonText[languageIndex]);
     }
 
     public void assertCustomerNumberInlineErrorText() {
-        Assertions.assertElementText(customerNumberInlineError,customerNumberInlineErrorText[languageIndex]);
+        Assertions_FE.assertElementText(customerNumberInlineError,customerNumberInlineErrorText[languageIndex]);
     }
 
     public void assertAccountNumberInlineErrorText() {
-        Assertions.assertElementText(accountNumberInlineError,accountNumberInlineErrorText[languageIndex]);
+        Assertions_FE.assertElementText(accountNumberInlineError,accountNumberInlineErrorText[languageIndex]);
     }
 
     public void assertaccessIDInlineErrorText() {
-        Assertions.assertElementText(accessIDInlineError,accessIDInlineErrorText[languageIndex]);
+        Assertions_FE.assertElementText(accessIDInlineError,accessIDInlineErrorText[languageIndex]);
+    }
+
+    public void assertWrongCustomerClassText() {
+        Assertions_FE.assertElementText(accessIDInlineError,wrongCustomerClassText[languageIndex]);
+    }
+
+    public void assertDataWasNotFoundText() {
+        Assertions_FE.assertElementText(accessIDInlineError,dataWasNotFoundText[languageIndex]);
+    }
+
+    public void assertNoAvailableProductText() {
+        Assertions_FE.assertElementText(accessIDInlineError,noAvailableProductText[languageIndex]);
+    }
+
+    public void assertDataDoesNotMatchText() {
+        Assertions_FE.assertElementText(accessIDInlineError,dataDoesNotMatchText[languageIndex]);
     }
 }

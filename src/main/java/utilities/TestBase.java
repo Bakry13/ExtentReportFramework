@@ -18,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class TestBase extends AbstractTestNGCucumberTests {
     public static int languageIndex = 0;
     public static String browserType = "";
-    public static String environmentURL = "ST";
+    public static String testEnvironment = "ST";
+    public static String environmentURL = "";
     public static WebDriver driver;
     static ChromeOptions chromeOptions = new ChromeOptions();
     static FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -120,7 +121,10 @@ public class TestBase extends AbstractTestNGCucumberTests {
     @Parameters("environment")
     public static void setEnvironmentURL(@Optional("ST") String environment) {
         if(environment.equals("ST"))
+        {
             environmentURL = ConfigUtil.Web_ST_URL;
+            testEnvironment = "ST";
+        }
         else if(environment.equals("SIT"));
     }
 //-----------------------------------Test Cases Annotations--------------------------------

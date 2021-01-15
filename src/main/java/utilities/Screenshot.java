@@ -30,8 +30,9 @@ public class Screenshot {
     }
 
     @Before
-    public void updateBrowserTypeInReport(Scenario scenario) {
-        scenario.log("Browser type is: "+TestBase.browserType);
+    public void updateEnvironmentInReport(Scenario scenario) {
+        scenario.log("Browser type is: "+TestBase.browserType
+                        +"\n, Test environment is: "+TestBase.testEnvironment);
     }
 
     @After
