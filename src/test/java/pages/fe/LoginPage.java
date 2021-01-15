@@ -165,18 +165,18 @@ public class LoginPage extends TestBase {
     }
 
     public void assertWrongCustomerClassText() {
-        Assertions_FE.assertElementText(accessIDInlineError,wrongCustomerClassText[languageIndex]);
+        Assertions_FE.assertElementText(signInErrorMsg,wrongCustomerClassText[languageIndex]);
     }
 
     public void assertDataWasNotFoundText() {
-        Assertions_FE.assertElementText(accessIDInlineError,dataWasNotFoundText[languageIndex]);
+        Assertions_FE.assertElementText(signInErrorMsg,dataWasNotFoundText[languageIndex]);
     }
 
     public void assertNoAvailableProductText() {
-        Assertions_FE.assertElementText(accessIDInlineError,noAvailableProductText[languageIndex]);
+        Assertions_FE.assertElementText(signInErrorMsg,noAvailableProductText[languageIndex]);
     }
 
     public void assertDataDoesNotMatchText() {
-        Assertions_FE.assertElementText(accessIDInlineError,dataDoesNotMatchText[languageIndex]);
+        Assertions_FE.assertElementText(signInErrorMsg,dataDoesNotMatchText[languageIndex]);
     }
 }
